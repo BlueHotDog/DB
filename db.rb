@@ -4,6 +4,8 @@ require_relative "lib/db/database"
 require_relative "lib/text/date_extractor"
 require_relative "lib/text/profession"
 require_relative "lib/text/born_in"
+require_relative "lib/text/names"
+require_relative "lib/query/when_born"
 
 def preprocess
   puts "======Parsing======"
@@ -35,4 +37,8 @@ for article in articles do
   DateExtractor.run(article, database)
   Profession.run(article, database)
   BornIn.run(article, database)
+  Names.run(article, database)
 end
+
+WhenBorn.run("alan turing", database)
+

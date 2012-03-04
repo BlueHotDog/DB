@@ -5,7 +5,7 @@ class Profession
     other_amount = 0.5/results.length unless results.length == 0
     results.each { |result|
       database.tables[:profession].add_row([article, result, first ? 0.5 : other_amount])
-      puts "Profession:#{article.name}\t#{result}:#{first ? 0.5 : other_amount}" if article.name.downcase == "adolf hitler"
+      #puts "Profession:#{article.name}\t#{result}:#{first ? 0.5 : other_amount}" if article.name.downcase == "adolf hitler"
       first = false
     }
   end
