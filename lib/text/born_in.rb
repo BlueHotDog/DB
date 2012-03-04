@@ -6,7 +6,7 @@ class BornIn
     other_amount = 0.5/results.length unless results.length == 0
     results.each { |result|
       database.tables[:bornIn].add_row([article, result, first ? 0.5 : other_amount])
-      puts "#{article.name}\t#{result}:#{first ? 0.5 : other_amount}"
+      puts "BornIn:#{article.name}\t#{result}:#{first ? 0.5 : other_amount}" if article.name.downcase == "adolf hitler"
       first = false
     }
   end
