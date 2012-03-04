@@ -2,6 +2,8 @@ require_relative "lib/parsing/doc_parser.rb"
 require_relative "lib/text/tf_idf.rb"
 require_relative "lib/db/database"
 require_relative "lib/text/date_extractor"
+require_relative "lib/text/profession"
+require_relative "lib/text/born_in"
 
 def preprocess
   puts "======Parsing======"
@@ -29,7 +31,8 @@ end
 
 database = Database.new()
 articles = save_to_disk
-DateExtractor.new(articles, database)
-for row in database.tables[:birthYear].rows do
-  puts "#{row[0].name}:\t#{row[1]}"
+for article in articles do
+  DateExtractor.run(article, database)
+  Profession.run(article, database)
+  BornIn.run(article, database)
 end
